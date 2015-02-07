@@ -102,7 +102,8 @@ class AtomHtmlPreviewView extends ScrollView
     </html>
     """
     iframe = document.createElement("iframe")
-    iframe.src = "data:text/html;charset=utf-8,#{encodeURI(text)}"
+    iframe.setAttribute("sandbox", "allow-scripts allow-same-origin")
+    iframe.src = @getPath()
     @html $ iframe
     @trigger('atom-html-preview:html-changed')
 
